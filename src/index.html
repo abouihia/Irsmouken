@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html>
 <head>
   <meta charset="utf-8">
   <title>SlideSide</title>
@@ -7,8 +7,43 @@
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
+
 </head>
+
 <body>
-  <app-root></app-root>
+   <app-root></app-root>
 </body>
+
+<script>
+  // using jQuery to change file input*/
+  $('<style>#customJs .custom-file-control:lang(en)::after {content: "Pick a file..."}</style>').appendTo('head');
+  $('<style>#customJs .custom-file-control:lang(en)::before {content: "OK"}</style>').appendTo('head');
+
+  /* show file value after file select
+  $('.custom-file-input').on('change',function(){
+    $(this).next('.form-control-file').addClass("selected").html($(this).val());
+  })
+  */
+
+  $('.custom-file-input').on('change',function(){
+    var fileName = $(this).val();
+    $(this).next('.form-control-file').hide();
+    $(this).toggleClass('form-control custom-file-input').attr('type','text').val(fileName);
+  })
+
+
+
+
+
+
+
+
+
+
+
+</script>
 </html>

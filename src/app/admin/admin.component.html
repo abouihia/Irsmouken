@@ -1,0 +1,129 @@
+
+
+
+
+<div class="container">
+
+  <h2 class="well" >Cette page d'administration vous permets de réaliser les actions:</h2>
+
+
+  <mat-accordion>
+
+    <!--first panel -->
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          Image de l'évenement
+        </mat-panel-title>
+        <mat-panel-description>
+          Gestion  de l'image de l'évenements
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+
+      <div class="container">
+        <div class="col-md-6">
+          <div class="form-group">
+            <label>Télécharger Image</label>
+            <div class="input-group">
+            <span class="input-group-btn">
+                <span class="btn btn-success btn-file">
+                  Browse… <input type="file" id="imgInp" (change)="selectFile($event)"></span>
+            </span>
+              <input type="text" class="form-control" [ngModel]="file" >
+              <button class="btn btn-success" [disabled]="!selectedFiles"  (click)="upload()">Upload</button>
+            </div>
+
+          </div>
+          <div *ngIf="currentFileUpload" class="progress" style="width:400px">
+
+            <div class="progress-bar progress-bar-info progress-bar-striped"
+                 role="progressbar" attr.aria-valuenow="{{progress.percentage}}"
+                 aria-valuemin="0" aria-valuemax="100"
+                 [ngStyle]="{width:progress.percentage+'%'}">
+              {{progress.percentage}}%</div>
+          </div>
+        </div>
+      </div>
+
+    </mat-expansion-panel>
+
+    <!--Second panel -->
+    <mat-expansion-panel (opened)="panelOpenState = true"  (closed)="panelOpenState = false">
+      <mat-expansion-panel-header>
+        <mat-panel-title> Admin contactes </mat-panel-title>
+        <mat-panel-description>Gestion des contactes</mat-panel-description>
+      </mat-expansion-panel-header>
+
+
+
+      <div class="example-header">
+        <mat-form-field>
+          <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+        </mat-form-field>
+      </div>
+
+      <div class="example-container mat-elevation-z8">
+
+        <mat-table [dataSource]="dataSource" matSort>
+
+          <!-- ID Column -->
+          <ng-container matColumnDef="name">
+            <mat-header-cell *matHeaderCellDef mat-sort-header> Name </mat-header-cell>
+            <mat-cell *matCellDef="let row"> {{row.name}} </mat-cell>
+          </ng-container>
+
+          <ng-container matColumnDef="pname">
+            <mat-header-cell *matHeaderCellDef mat-sort-header> Prenom </mat-header-cell>
+            <mat-cell *matCellDef="let row"> {{row.pname}} </mat-cell>
+          </ng-container>
+
+          <ng-container matColumnDef="phone">
+            <mat-header-cell *matHeaderCellDef mat-sort-header> Telephone </mat-header-cell>
+            <mat-cell *matCellDef="let row"> {{row.phone}} </mat-cell>
+          </ng-container>
+
+          <ng-container matColumnDef="email">
+            <mat-header-cell *matHeaderCellDef mat-sort-header> Email </mat-header-cell>
+            <mat-cell *matCellDef="let row"> {{row.email}} </mat-cell>
+          </ng-container>
+
+          <ng-container matColumnDef="adresse1">
+            <mat-header-cell *matHeaderCellDef mat-sort-header> Adresse1 </mat-header-cell>
+            <mat-cell *matCellDef="let row"> {{row.adresse1}} </mat-cell>
+          </ng-container>
+
+          <ng-container matColumnDef="adresse2">
+            <mat-header-cell *matHeaderCellDef mat-sort-header> Adresse2 </mat-header-cell>
+            <mat-cell *matCellDef="let row"> {{row.adresse2}} </mat-cell>
+          </ng-container>
+
+          <ng-container matColumnDef="ville">
+            <mat-header-cell *matHeaderCellDef mat-sort-header> ville </mat-header-cell>
+            <mat-cell *matCellDef="let row"> {{row.ville}} </mat-cell>
+          </ng-container>
+
+          <ng-container matColumnDef="postalCode">
+            <mat-header-cell *matHeaderCellDef mat-sort-header> Code postal </mat-header-cell>
+            <mat-cell *matCellDef="let row"> {{row.postalCode}} </mat-cell>
+          </ng-container>
+
+          <ng-container matColumnDef="textMessage">
+            <mat-header-cell *matHeaderCellDef mat-sort-header> Message </mat-header-cell>
+            <mat-cell *matCellDef="let row"> {{row.textMessage}} </mat-cell>
+          </ng-container>
+
+
+          <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+          <mat-row *matRowDef="let row; columns: displayedColumns;">
+          </mat-row>
+        </mat-table>
+
+        <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+      </div>
+
+
+    </mat-expansion-panel>
+  </mat-accordion>
+
+
+</div>

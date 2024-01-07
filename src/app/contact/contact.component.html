@@ -1,0 +1,110 @@
+
+
+
+
+<div class="container">
+  <div *ngIf="showMessage">
+        <p class="text-success h3">Votre message est bien enregistré</p>
+  </div>
+  <h2 class="well" >Nous contacter</h2>
+
+  <form class="example-form" [formGroup]="angForm">
+
+    <mat-form-field class="example-full-width">
+      <input matInput placeholder="votre nom" id="name" formControlName="name" #name required>
+      <mat-error *ngIf="nameForm.invalid && (nameForm.dirty ||  nameForm.touched)" >
+        <mat-error *ngIf="nameForm.errors.required">
+          Le nom est obligatoire
+        </mat-error>
+      </mat-error>
+    </mat-form-field>
+
+
+    <mat-form-field class="example-full-width">
+      <input matInput placeholder="votre Prenom" id="pname" formControlName="pname"  #pname required>
+      <mat-error *ngIf="pnameForm.invalid && (pnameForm.dirty ||  pnameForm.touched)" >
+        <mat-error *ngIf="pnameForm.errors.required">
+          Le prenom est obligatoire
+        </mat-error>
+      </mat-error>
+
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width">
+      <span matPrefix>&nbsp;</span>
+      <input type="tel" matInput placeholder="Telephone" id="phone" formControlName="phone"  #phone required>
+
+      <mat-error *ngIf="phoneForm.invalid && (phoneForm.dirty ||  phoneForm.touched)" >
+        <mat-error *ngIf="phoneForm.errors.required">
+          Le téléphone est obligatoire
+        </mat-error>
+      </mat-error>
+
+    </mat-form-field>
+
+
+
+    <mat-form-field class="example-full-width">
+      <input matInput placeholder="Email" id="email" formControlName="email"  #email required>
+      <mat-error *ngIf="emailForm.invalid && (emailForm.dirty ||  emailForm.touched)">
+        <mat-error *ngIf="emailForm.errors.required"> Email est<strong> obligatoire</strong>
+        </mat-error>
+      </mat-error>
+    </mat-form-field>
+
+
+
+    <mat-form-field class="example-full-width">
+      <textarea matInput placeholder="Address1" id="adresse1" formControlName="adresse1"  #adresse1 required></textarea>
+      <mat-error *ngIf="adresse1Form.invalid && (adresse1Form.dirty ||  adresse1Form.touched)">
+        <mat-error *ngIf="adresse1Form.errors.required"> Adresse est<strong> obligatoire</strong>
+        </mat-error>
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field class="example-full-width">
+      <textarea matInput placeholder="Address 2" id="adresse2" formControlName="adresse2"  #adresse2></textarea>
+    </mat-form-field>
+
+    <table class="example-full-width" cellspacing="0"><tr>
+      <td><mat-form-field class="example-full-width">
+        <input matInput placeholder="Ville" id="ville" formControlName="ville"  #ville required>
+        <mat-error *ngIf="villeForm.invalid && (villeForm.dirty ||  villeForm.touched)">
+          <mat-error *ngIf="villeForm.errors.required"> Ville est<strong> obligatoire</strong>
+          </mat-error>
+
+        </mat-error>
+      </mat-form-field>
+      </td>
+      <td>
+        <mat-form-field class="example-full-width">
+        <input matInput  maxlength="5" placeholder="Postal Code" id="postalCode" formControlName="postalCode"  #postalCode required>
+        <mat-hint align="end">{{postalCode.value.length}} / 5</mat-hint>
+          <mat-error *ngIf="postalCodeForm.invalid && (postalCodeForm.dirty ||  postalCodeForm.touched)">
+            <mat-error *ngIf="postalCodeForm.errors.required"> Le code postal est<strong> obligatoire</strong>
+            </mat-error>
+          </mat-error>
+      </mat-form-field>
+      </td>
+    </tr></table>
+
+    <mat-form-field class="example-full-width">
+      <textarea matInput placeholder="Votre message"  id="textMessage"  formControlName="textMessage"  #textMessage required></textarea>
+      <mat-error *ngIf="textMessageForm.invalid && (textMessageForm.dirty ||  textMessageForm.touched)">
+        <mat-error *ngIf="textMessageForm.errors.required"> Le code postal est<strong> obligatoire</strong>
+        </mat-error>
+      </mat-error>
+    </mat-form-field>
+
+    <div class="form-group">
+      <div class="col-sm-offset-2 col-sm-10">
+
+        <button   [disabled]="angForm.invalid"
+                  (click)="addContact(name.value, pname.value,phone.value, email.value,
+                                      adresse1.value,adresse2.value,ville.value, postalCode.value,
+                                        textMessage.value)"
+                  mat-raised-button color="primary" >Envoyer</button>
+      </div>
+    </div>
+  </form>
+
+</div>

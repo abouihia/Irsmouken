@@ -1,0 +1,25 @@
+This application is about Espoir du sud association
+
+to install this application we need same package
+
+node.js
+npm
+angular5 or higher
+ECMAscript 6 or higher
+
+for data base we need mongo db
+
+to install this application launch thoses commandes:
+
+npm install
+
+ng build
+
+node server
+
+
+for nodemon  node monitoring
+
+to install  sudo npm i -g nodemon
+
+after that nodemon serve (the name of your server)

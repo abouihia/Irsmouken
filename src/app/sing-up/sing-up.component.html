@@ -1,0 +1,71 @@
+
+<div *ngIf="!authService.isUserEmailLoggedIn">
+<div class="container" *ngIf="isNewUser">
+
+
+  <p *ngIf="error.message.length > 0" class="text-danger">{{error.message}}</p>
+  <form (ngSubmit)="onSignUp()">
+        <!--  champ nom   -->
+        <div class="form-group">
+          <label class="control-label col-sm-2" for="email">Email:</label>
+          <div class="col-sm-10">
+            <input type="email" class="form-control" id="email" placeholder="Enter votre email" name="email" required [(ngModel)]="email">
+            <p *ngIf="errorMessageMail.length > 0" class="text-danger">{{errorMessageMail}}</p>
+
+          </div>
+        </div>
+
+        <!--  champ password   -->
+        <div class="form-group">
+          <label class="control-label col-sm-2" for="password">Password:</label>
+          <div class="col-sm-10">
+            <input type="password" class="form-control" id="password" placeholder="Enter votre password" name="password"  required [(ngModel)]="password">
+            <p *ngIf="errorMessagePassword.length > 0" class="text-danger">{{errorMessagePassword}}</p>
+            <p *ngIf="errorMessageLength.length > 0" class="text-danger">{{errorMessageLength}}</p>
+
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="col-sm-offset-2 col-sm-10">
+            <button type="submit" class="btn btn-success">Register</button>
+          </div>
+        </div>
+  </form>
+  <h4 class="text-primary" (click)="changeForm()">J'ai déjà un compte? >> Se Authentifier</h4>
+</div>
+
+<div class="container" *ngIf="!isNewUser">
+
+
+  <form (ngSubmit)="onLoginEmail()">
+
+    <div class="form-group">
+      <label class="control-label col-sm-2" for="email">Email:</label>
+      <div class="col-sm-10">
+        <input type="email" class="form-control" id="email" placeholder="Enter votre email" name="email" required [(ngModel)]="email">
+        <p *ngIf="errorMessageMail.length > 0" class="text-danger">{{errorMessageMail}}</p>
+      </div>
+    </div>
+
+    <!--  champ password   -->
+    <div class="form-group">
+      <label class="control-label col-sm-2" for="password">Password:</label>
+      <div class="col-sm-10">
+        <input type="password" class="form-control" id="password" placeholder="Enter votre password" name="password"  required [(ngModel)]="password">
+        <p *ngIf="errorMessagePassword.length > 0" class="text-danger">{{errorMessagePassword}}</p>
+        <p *ngIf="errorMessageLength.length > 0" class="text-danger">{{errorMessageLength}}</p>
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="col-sm-offset-2 col-sm-10">
+        <button type="submit" class="btn btn-success">Log In</button>
+      </div>
+    </div>
+  </form>
+
+  <h4 class="text-primary" (click)="changeForm()">J'ai pas encore un compte? >> S'enregistrer</h4>
+
+  <a *ngIf="!resetPassword && isValidMailFormat(email)" class="text-danger" (click)="sendResetEmail()">Reset Password for {{email}}</a>
+  <p *ngIf="resetPassword" class="text-success">Check your email to reset password!</p>
+</div>
+</div>

@@ -1,0 +1,62 @@
+<!-- Navigation -->
+
+
+
+
+<div class="main-content">
+  <div class="counterDown text-center">
+    <h1>Il Reste </h1>
+
+    <div class="countdown" id="js-countdown">
+      <div class="countdown__item countdown__item--large">
+        <div class="countdown__timer js-countdown-days" aria-labelledby="day-countdown">
+          {{days}}
+        </div>
+
+        <div class="countdown__label" id="day-countdown">Jours</div>
+      </div>
+
+      <div class="countdown__item">
+        <div class="countdown__timer js-countdown-hours" aria-labelledby="hour-countdown">
+           {{hours}}
+        </div>
+
+        <div class="countdown__label" id="hour-countdown">Heures</div>
+      </div>
+
+      <div class="countdown__item">
+        <div class="countdown__timer js-countdown-minutes" aria-labelledby="minute-countdown">
+          {{minutes}}
+        </div>
+
+        <div class="countdown__label" id="minute-countdown">Minutes</div>
+      </div>
+
+      <div class="countdown__item">
+        <div class="countdown__timer js-countdown-seconds" aria-labelledby="second-countdown">
+          {{seconds}}
+        </div>
+
+        <div class="countdown__label" id="second-countdown">Seconds</div>
+      </div>
+    </div>
+
+
+
+
+
+  </div>
+</div>
+<section>
+  <div class="container rounded mx-auto d-block" >
+    <div class="row align-items-center">
+      <div class="col-lg-6">
+        <div class="p-5" *ngFor="let image of images">
+          <img  src="{{image.url}}" alt="">
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+

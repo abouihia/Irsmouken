@@ -1,0 +1,38 @@
+
+
+
+<ng-template #content let-c="close" let-d="dismiss">
+  <div class="modal-header">
+    <h4 class="modal-title">Se connecter</h4>
+    <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+
+        <div class="modal-body">
+          <div class="form-group">
+            <input type="email" class="form-control" placeholder="Username" required="required" [(ngModel)]="email">
+          </div>
+          <div class="form-group">
+            <input type="password" class="form-control" placeholder="Password" required="required" [(ngModel)]="password">
+          </div>
+          <div class="form-group">
+            <button type="submit" class="btn btn-primary btn-block" (click)="onSignUp()">Log in</button>
+          </div>
+          <div class="clearfix">
+            <label class="pull-left checkbox-inline"><input type="checkbox">Se souvenir de moi</label>
+            <a href="#" class="pull-right">Mot de passe oublie?</a>
+          </div>
+        </div>
+
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline-dark" (click)="c('Close click')">Close</button>
+  </div>
+</ng-template>
+
+<button class="btn btn-secondary pull-right" (click)="open(content)">Se connecter</button>
+
+
+
+
+
